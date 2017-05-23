@@ -1,6 +1,6 @@
 # Version: 0.0.1
 FROM node:0.10
-MAINTAINER Your Name "youremail@example.com"
+MAINTAINER Tim Lines "tim.lines@alaskaair.com"
 
 # See if you can do this w/o looking at Dockerfile.example
 # Create a directory at /usr/src/app
@@ -17,6 +17,12 @@ MAINTAINER Your Name "youremail@example.com"
 
 # Specify command to run when the container is launched. 
 # Use an array of arguments to avoid issues with `/bin/sh -c`
-
+EXPOSE 8085
+RUN mkdir -p /usr/src
+WORKDIR /usr/src
+RUN git clone https://github.com/automation-tools-bootcamp/example-nodejs-app.git
+WORKDIR /usr/src/example-nodejs-app
+RUN npm install
+CMD [ "npm", "start" ]
 
 # If that worked, try rebuilding in different ways....
